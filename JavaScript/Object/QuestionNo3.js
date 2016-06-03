@@ -5,13 +5,23 @@
  *         比如一个在最后一行定义一个变量p，在第一行也可以用，只是它的值为undefined.
  * 以下为参考代码：
  */
-console.log('-------------------问题4---------------');
+
 //代码演示：
-var p = '全局变量p';
-function fnTest() {
-    console.log(p);  //输出：undefined
-    var p = '函数内变量p';
-    console.log(p);  //输出 函数内变量
+var color = 'red';
+function changeColor() {
+    var anotherColor = 'blue';
+    function swapColor(){
+        var tempColor = anotherColor;
+        anotherColor = color;
+        color = tempColor;
+        
+        // 这里可以访问 color、anotherColor 和 tempColor
+        console.log(color+'--'+anotherColor+'--'+tempColor);
+    }
+    swapColor();
+    // 这里可以访问 color和anotherColor
+    console.log(color+'--'+anotherColor);
 }
-fnTest();
-console.log(p);  //输出：全局变量p
+changeColor();
+// 这里可以访问 color
+console.log(color);
